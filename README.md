@@ -1,6 +1,6 @@
 # CoFiX Product Documentation
 
-## 1. Introduction
+## 1. Introduction {% sup %}**4**{% endsup %}
 
 This is the design document of an implementation of the AMM model described in the white paper "[CoFiX, A computable financial transaction model](https://cofix.io/doc/CoFiX_White_Paper.pdf)". It describes mechanisms such as price calculation, trading, market making, exception handling and front-end interaction.
 
