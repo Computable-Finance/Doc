@@ -94,7 +94,7 @@ The initial amount of share\(XToken\) is S0:
 
 ![](.gitbook/assets/screen-shot-2020-09-26-at-2.18.32-pm.png)
 
-### 4.3 Market maker net worth ****of each share\(XToken\), Np
+### 4.3 Market maker net worth of each share\(XToken\), Np
 
 **Np** is The net worth of each share\(XToken\) in an asset pool, it is represented by its ETH value.
 
