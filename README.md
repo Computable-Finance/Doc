@@ -76,7 +76,7 @@ Market makers are the liquidity providers of CoFiX and earn income by providing 
 
 ### 4.1 Market maker share
 
-**The XToken** represents the proportion of the asset pool owned by a market maker. As market makers put assets into the pool, they receive corresponding XTokens. When a market maker exits the pool, they do so by redeeming their XToken which entitles them to their share of the pool.
+**The XToken** represents the proportion of the asset pool owned by a market maker. As market makers put assets into the pool, they receive corresponding XTokens. When a market maker exits the pool, they do so by redeeming their XToken which entitles them to their share of the pool. XToken names follow X<sub>T1</sub>, X<sub>T2</sub>, X<sub>T3</sub>...
 
 ### 4.2 Asset pool creation and initialization
 
