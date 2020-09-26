@@ -45,7 +45,7 @@ Since a transaction in Ethereum requires a certain waiting time from initiation 
   </thead>
   <tbody>
     <tr>
-      <td style="text-align:left">Estimated price: <b>Pes</b>
+      <td style="text-align:left">Estimated price: <b>P<sub>es</sub></b>
       </td>
       <td style="text-align:left">
         <p>The reference price seen by the user or market maker when initiating a
@@ -56,7 +56,7 @@ Since a transaction in Ethereum requires a certain waiting time from initiation 
       </td>
     </tr>
     <tr>
-      <td style="text-align:left">Execution price: <b>Pex</b>
+      <td style="text-align:left">Execution price: <b>P<sub>ex</sub></b>
       </td>
       <td style="text-align:left">When the transaction is executed, the latest price of the NEST oracle
         is used in the trade.</td>
@@ -66,9 +66,9 @@ Since a transaction in Ethereum requires a certain waiting time from initiation 
 
 The detailed calculation method for this is described below.
 
-**Pd = \(Pex - Pes\)/Pes**
+**P<sub>d</sub> = \(P<sub>ex</sub> - P<sub>es</sub>\)/P<sub>es</sub>**
 
-The transaction will revert if **Pd&gt;1%**.
+The transaction will revert if **P<sub>d</sub>&gt;1%**.
 
 ## 4. Market maker mechanism
 
