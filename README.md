@@ -84,27 +84,27 @@ Anyone can choose a price pair from the NEST oracle to create a corresponding Co
 
 Taking ETH-USDT as an example, when the market maker pool is created:
 
-**Np** is the net worth of each share\(XToken\), it is represented by its ETH value: initially Np=1
+**N<sub>p</sub>** is the net worth of each share\(XToken\), it is represented by its ETH value: initially N<sub>p</sub>=1
 
-The quantity of ETH market-making assets =**Ae**
+The quantity of ETH market-making assets =**A<sub>e</sub>**
 
-The quantity of USDT market-making assets =**Au**
+The quantity of USDT market-making assets =**A<sub>u</sub>**
 
-The initial amount of share\(XToken\) is S0: 
+The initial amount of share\(XToken\) is S<sub>0</sub>: 
 
 ![](.gitbook/assets/screen-shot-2020-09-26-at-2.18.32-pm.png)
 
-### 4.3 Market maker net worth of each share\(XToken\), Np
+### 4.3 Market maker net worth of each share\(XToken\), N<sub>p</sub>
 
-**Np** is The net worth of each share\(XToken\) in an asset pool, it is represented by its ETH value.
+**N<sub>p</sub>** is The net worth of each share\(XToken\) in an asset pool, it is represented by its ETH value.
 
-Whenever there is a transaction, subscription, or redemption operation; Np is updated.
+Whenever there is a transaction, subscription, or redemption operation; N<sub>p</sub> is updated.
 
 Taking the ETH-USDT asset pool as an example:
 
 ETH-USDT asset pool total issuance share is **S \(The total amount of XToken\)**
 
-The formula for calculating the asset pool’s net worth **Np** is:
+The formula for calculating the asset pool’s net worth **N<sub>p</sub>** is:
 
 ![](.gitbook/assets/image%20%288%29.png)
 
@@ -114,11 +114,11 @@ Subscription means participating in an asset pools market making and results in 
 
 Taking the ETH-USDT asset pool as an example:
 
-Alice subscribes amount **a** of ETH to the ETH-USDT asset pool, and receives amount **s1** of the XToken.
+Alice subscribes amount **a** of ETH to the ETH-USDT asset pool, and receives amount **s<sub>1</sub>** of the XToken.
 
 ![](.gitbook/assets/image%20%2810%29.png)
 
-Similarly, if Alice subscribes amount **b** of USDT to the ETH-USDT asset pool, she receives amount **s2** of the XToken.
+Similarly, if Alice subscribes amount **b** of USDT to the ETH-USDT asset pool, she receives amount **s<sub>2</sub>** of the XToken.
 
 ![](.gitbook/assets/image%20%2812%29.png)
 
@@ -162,13 +162,13 @@ The calculation takes the process of Alice using USDT to exchange DAI as an exam
 
 Suppose at this time
 
-ETH/USDT oracle price = **P1**
+ETH/USDT oracle price = **P<sub>1</sub>**
 
-ETH/USDT asset pool compensation factor =**K1**
+ETH/USDT asset pool compensation factor =**K<sub>1</sub>**
 
-ETH/DAI oracle price = **P2**
+ETH/DAI oracle price = **P<sub>2</sub>**
 
-ETH/DAI asset pool compensation factor =**K2**
+ETH/DAI asset pool compensation factor =**K<sub>2</sub>**
 
 Then, when Alice uses amount **a** of USDT to exchange amount **y** of DAI, the calculation is:
 
@@ -192,9 +192,9 @@ Considering that Ethereum has transaction congestion, the transaction may not be
 
 Therefore, after a transaction is initiated, there may be a large deviation between the settlement price and the estimated price when the transaction is initiated. Therefore, a variable is introduced, the transaction effective time **t**
 
-1. When the transaction is initiated, the time is **t0**
-2. When the transaction is successfully confirmed, the time is **t1**
-3. Then, if **t1-t0  &gt; t** , the transaction will revert.
+1. When the transaction is initiated, the time is **t<sub>0</sub>**
+2. When the transaction is successfully confirmed, the time is **t<sub>1</sub>**
+3. Then, if **t<sub>1</sub>-t<sub>0</sub>  &gt; t** , the transaction will revert.
 4. In the current setting, **t=600s**
 
 ### 6.2 Circuit breakers
@@ -203,7 +203,7 @@ According to the [Trading Compensation of CoFiX](https://cofix.io/doc/Trading_Co
 
 The system should be able to trigger Circuit breakers when the following conditions are met:
 
-1. The K0 value exceeds a range, K0&gt;5%
+1. The K<sub>0</sub> value exceeds a range, K<sub>0</sub>&gt;5%
 2. The volatility rate σ rises to a limit, σ&gt;0.1% per second
 3. Delay T exceeds a range, T&gt;900s 
 
@@ -219,8 +219,8 @@ Dividend and Governance,  produced through liquidity mining.
 
 **CoFi Tokens are generated through the 3 mining pools:**
 
-* **Mining pool A, the trading mining pool:** The token amount generated per TX is based on the extra fees collected from that TX, the token generation speed \(Token per block\) of the mining pool B, the total amount of the corresponding asset pool XToken participate in mining, and the Np \(net worth per share of the corresponding asset pool\) 
-* **Mining pool B, the liquidity mining pool: b\_t** is the ****amount of CoFi tokens generated per block, b\_t ≥1, start with b\_0=4, the amount will be reduced by 20% for every 2,400,000 blocks and kept the integer only. For example b\_1=3, b\_2=2, b\_3=1, b\_4=1, b\_5=1, b\_6=1 ...
+* **Mining pool A, the trading mining pool:** The token amount generated per TX is based on the extra fees collected from that TX, the token generation speed \(Token per block\) of the mining pool B, the total amount of the corresponding asset pool XToken participate in mining, and the N<sub>p</sub> \(net worth per share of the corresponding asset pool\) 
+* **Mining pool B, the liquidity mining pool: b<sub>t</sub>** is the ****amount of CoFi tokens generated per block, b<sub>t</sub> ≥1, start with b<sub>0</sub>=4, the amount will be reduced by 20% for every 2,400,000 blocks and kept the integer only. For example b<sub>1</sub>=3, b<sub>2</sub>=2, b<sub>3</sub>=1, b<sub>4</sub>=1, b<sub>5</sub>=1, b<sub>6</sub>=1 ...
 * **Mining pool C, the node mining pool: c**\_t is the amount of CoFi tokens generated per block, c\_t = b\_t/9
 
 **General token distribution:**
