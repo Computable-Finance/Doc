@@ -66,7 +66,7 @@ Since a transaction in Ethereum requires a certain waiting time from initiation 
 
 The detailed calculation method for this is described below.
 
-**P<sub>d</sub> = \(P<sub>ex</sub> - P<sub>es</sub>\)/P<sub>es</sub>**
+**P<sub>d</sub> = |P<sub>ex</sub> - P<sub>es</sub>|/P<sub>es</sub>**
 
 The transaction will revert if **P<sub>d</sub>&gt;1%**.
 
