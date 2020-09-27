@@ -130,7 +130,7 @@ Taking the ETH-USDT asset pool as an example:
 
 θ represents an extra transaction fee
 
-C Alice redeems amount **c** of the XToken
+c Alice redeems amount **c** of the XToken
 
 Then the amount **e** of ETH that can be redeemed is:
 
@@ -146,11 +146,11 @@ The amount **u** of USDT that can be redeemed is:
 
 Using ETH to exchange USDT and USDT to exchange ETH as an example:
 
-Alice uses ****amount **a** of USDT to exchange amount **x** of ETH, the calculation is:
+Alice uses amount **a** of USDT to exchange amount **x** of ETH, the calculation is:
 
 ![](.gitbook/assets/image%20%287%29.png)
 
-Alice uses ****amount **b** of ETH to exchange amount **y** of USDT, the calculation is:
+Alice uses amount **b** of ETH to exchange amount **y** of USDT, the calculation is:
 
 ![](.gitbook/assets/image%20%285%29.png)
 
@@ -221,7 +221,7 @@ Dividend and Governance,  produced through liquidity mining.
 
 * **Mining pool A, the trading mining pool:** The token amount generated per TX is based on the extra fees collected from that TX, the token generation speed \(Token per block\) of the mining pool B, the total amount of the corresponding asset pool XToken participate in mining, and the N<sub>p</sub> \(net worth per share of the corresponding asset pool\) 
 * **Mining pool B, the liquidity mining pool: b<sub>t</sub>** is the ****amount of CoFi tokens generated per block, b<sub>t</sub> ≥1, start with b<sub>0</sub>=4, the amount will be reduced by 20% for every 2,400,000 blocks and kept the integer only. For example b<sub>1</sub>=3, b<sub>2</sub>=2, b<sub>3</sub>=1, b<sub>4</sub>=1, b<sub>5</sub>=1, b<sub>6</sub>=1 ...
-* **Mining pool C, the node mining pool: c**\_t is the amount of CoFi tokens generated per block, c\_t = b\_t/9
+* **Mining pool C, the node mining pool: c<sub>t</sub>** is the amount of CoFi tokens generated per block, c<sub>t</sub> = b<sub>t</sub>/9
 
 **General token distribution:**
 
@@ -236,23 +236,23 @@ Dividend and Governance,  produced through liquidity mining.
 
 #### **Token generation** mechanism**:** 
 
-In the same TX of every trade,  A\(y\) amount of token is generated.
+In the TX of every trade,  A(y<sub>t</sub>) amount of token is generated.
 
 For trading TX t:
 
-* The trading volume is Xt ETH, the extra fees collected from that TX t is Yt=Xt\*θ ETH
-* The base amount of CoFi tokens generated for TX t is a\_t
+* The trading volume is X<sub>t</sub> ETH, the extra fees collected from that TX t is Y<sub>t</sub>=X<sub>t</sub>*θ ETH
+* The base amount of CoFi tokens generated for TX t is a<sub>t</sub>
 
 ![](.gitbook/assets/screen-shot-2020-09-26-at-3.22.50-pm.png)
 
-* **b\_t** is the token generation speed \(Token per block\) of the mining pool B
-* **Xt** is the total amount of the corresponding asset pool XToken participate in mining
-* **Np** is The net worth of each share\(XToken\) in an asset pool, it is represented by its ETH value.
-* The actual amount of CoFo token generated for TX t is A\(yt\) 
+* **b<sub>t</sub>** is the token generation speed \(Token per block\) of the mining pool B
+* **X<sub>t</sub>** is the total amount of the corresponding asset pool XToken participate in mining
+* **N<sub>p</sub>** is The net worth of each share\(XToken\) in an asset pool, it is represented by its ETH value.
+* The actual amount of CoFo token generated for TX t is A(y<sub>t</sub>) 
 
 ![](.gitbook/assets/screen-shot-2020-09-26-at-3.50.43-pm.png)
 
-* The block interval between the trading TX t and the previous trading TX is s, the token density parameter is f\_t
+* The block interval between the trading TX t and the previous trading TX is s, the token density parameter is f<sub>t</sub>
 
 ![](.gitbook/assets/screen-shot-2020-09-26-at-3.56.05-pm.png)
 
@@ -261,15 +261,15 @@ For trading TX t:
 
 ![](.gitbook/assets/screen-shot-2020-09-26-at-4.02.59-pm.png)
 
-* Ux is the total asset value \(in ETH\) for asset X in trading pair X-Y, Uy is the total asset value \(in ETH\) for asset Y in trading pair X-Y
+* U<sub>x</sub> is the total asset value \(in ETH\) for asset X in trading pair X-Y, U<sub>y</sub> is the total asset value \(in ETH\) for asset Y in trading pair X-Y
 
 #### **Token distribution** mechanism**:** 
 
 For trading TX t:
 
-* 80% A\(yt\) is distributed to the trader in the same trading TX
-* 10% A\(yt\) = I\_j\(y\_t\) is distributed to the corresponding liquidity mining rewards pool for liquidity providers to claim
-* 10% A\(yt\) = R\(y\_t\) is distributed to the node rewards pool for nodes to claim
+* 80% A(y<sub>t</sub>) is distributed to the trader in the same trading TX
+* 10% A(y<sub>t</sub>) = I<sub>j</sub>\(y<sub>t</sub>) is distributed to the corresponding liquidity mining rewards pool for liquidity providers to claim
+* 10% A(y<sub>t</sub>) = R(y<sub>t</sub>) is distributed to the node rewards pool for nodes to claim
 
 ### **7.3** Details about the liquidity mining:
 
