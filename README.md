@@ -275,35 +275,35 @@ For trading TX t:
 
 #### Token generation mechanism:
 
-* b\_t is the amount of CoFi tokens generated per block, b\_t ≥1, start with b\_0=4, the amount will be reduced by 20% for every 2,400,000 blocks and kept the integer only. For example b\_1=3, b\_2=2, b\_3=1, b\_4=1, b\_5=1, b\_6=1 ...
+* b<sub>t</sub> is the amount of CoFi tokens generated per block, b<sub>t</sub> ≥1, start with b<sub>0</sub>=4, the amount will be reduced by 20% for every 2,400,000 blocks and kept the integer only. For example b<sub>1</sub>=3, b<sub>2</sub>=2, b<sub>3</sub>=1, b<sub>4</sub>=1, b<sub>5</sub>=1, b<sub>6</sub>=1 ...
 
 #### **Token distribution** mechanism**:** 
 
 The market maker **m** claims CoFi token from the liquidity mining reward pool **j** through TX **t**:
 
 * The CoFi token claim can be trigger by either claim TX, XToken deposit, or XToken withdraw TX. 
-* The amount of CoFi token can be claimed through TX t is B\_mt\(x\_mt-1\)
+* The amount of CoFi token can be claimed through TX t is B<sub>mt</sub>(x<sub>mt-1</sub>)
 
 ![](.gitbook/assets/screen-shot-2020-09-26-at-4.55.44-pm.png)
 
-* **x\_mt-1** is the liquidity provider's XToken balance in liquidity mining reward pool **j** before TX t  ****
-* **G\_mt** is the mining factor for TX t, it represents how many CoFi the liquidity provider m can claim per XToken. **G\_mt** is read from the system variable **G\_t**
-* **G\_mt-1** is the mining factor for previous TX done by the liquidity provider m
+* **x<sub>mt-1</sub>** is the liquidity provider's XToken balance in liquidity mining reward pool **j** before TX t  ****
+* **G<sub>mt</sub>** is the mining factor for TX t, it represents how many CoFi the liquidity provider m can claim per XToken. **G<sub>mt</sub>t** is read from the system variable **G<sub>t</sub>**
+* **G<sub>mt-1</sub>** is the mining factor for previous TX done by the liquidity provider m
 
 ![](.gitbook/assets/screen-shot-2020-09-26-at-6.08.12-pm.png)
 
-* There are amount **n** of asset pools participate in liquidity mining, the corresponding Xtoken are X\_T1, X\_T2... X\_Tn. 
-* G\_0 = 0 
-* h\_t is the time of the TX t, h\_t-1 is the time of the previous claim, deposit, or withdraw TX
-* The summation interval of ∑I\_j \(Y\_i\) is h\_t to h\_t-1
-* X\_t is the total amount of XToken participate in the liquidity mining reward pool j when TX t is submitted 
-* I\_j\(y\_i\) is the amount of CoFi token received from the trading mining pool during between h\_t-1 to h\_t 
+* There are amount **n** of asset pools participate in liquidity mining, the corresponding Xtoken are X<sub>T1</sub>, X<sub>T2</sub>... X<sub>Tn</sub>. 
+* G<sub>0</sub> = 0 
+* h<sub>t</sub> is the time of the TX t, h<sub>t-1</sub> is the time of the previous claim, deposit, or withdraw TX
+* The summation interval of ∑I<sub>j</sub>(Y<sub>i</sub>) is h<sub>t</sub> to h<sub>t-1</sub>
+* X<sub>t</sub> is the total amount of XToken participate in the liquidity mining reward pool j when TX t is submitted 
+* I<sub>j</sub>\(y<sub>i</sub>) is the amount of CoFi token received from the trading mining pool during between h<sub>t-1</sub> to h<sub>t</sub>
 
 ### **7.4** Details about the node mining:
 
 #### Token generation mechanism:
 
-* c\_t is the amount of CoFi tokens generated per block, c\_t = b\_t/9
+* c<sub>t</sub> is the amount of CoFi tokens generated per block, c<sub>t</sub> = b<sub>t</sub>/9
 
 #### Token **distribution** mechanism:
 
@@ -313,20 +313,20 @@ The market maker **m** claims CoFi token from the liquidity mining reward pool *
 
 The node **m** claims CoFi token from the node reward pool through TX **t**:
 
-* The amount of CoFi token can be claimed through TX t is c\_mt\(n\_mt-1\)
+* The amount of CoFi token can be claimed through TX t is c<sub>mt</sub>(n<sub>mt-1</sub>)
 
 ![](.gitbook/assets/screen-shot-2020-09-26-at-7.26.28-pm.png)
 
-* h\_t is the time of the TX t, h\_t-1 is the time of the previous claim, deposit, or withdraw TX
-* n\_mt-1 is m's balance of CoFiX node tokens in the node mining pool before TX t
-* **D\_mt** is the mining factor for TX t, it represents how many CoFi token the node m can claim per node token. D**\_mt** is read from the system variable D**\_t**
-* **D\_mt-1** is the mining factor for previous TX done by the node m
+* h<sub>t</sub> is the time of the TX t, h\_t-1 is the time of the previous claim, deposit, or withdraw TX
+* n<sub>mt-1</sub> is m's balance of CoFiX node tokens in the node mining pool before TX t
+* **D<sub>mt</sub>** is the mining factor for TX t, it represents how many CoFi token the node m can claim per node token. D<sub>mt</sub> is read from the system variable D<sub>t</sub>
+* **D<sub>mt-1</sub>** is the mining factor for previous TX done by the node m
 
 ![](.gitbook/assets/screen-shot-2020-09-26-at-6.59.08-pm.png)
 
-* The summation interval of ∑R\(y\_t\) is h\_t to h\_t-1
-* R\(y\_t\) is the amount of CoFi token received from the trading mining pool during between h\_t-1 to h\_t
-* N\_t is the total amount of XToken participate in the node mining when TX t is submitted
+* The summation interval of ∑R(y<sub>t</sub>) is h<sub>t</sub> to h<sub>t-1</sub>
+* R(y<sub>t</sub>) is the amount of CoFi token received from the trading mining pool during between h<sub>t-1</sub> to h<sub>t</sub>
+* N<sub>t</sub> is the total amount of XToken participate in the node mining when TX t is submitted
 
 ### 7.5 CoFi token dividend and repurchase model：
 
@@ -341,19 +341,19 @@ All the extra fees \(in ETH\) collected from trading go in a saving pool,  the p
 
 CoFi token holder m makes a dividend claiming TX t:
 
-* The total amount of ETH can be claimed in TX t is E\_mt\(n\_mt-1\)
+* The total amount of ETH can be claimed in TX t is E<sub>mt</sub>(n<sub>mt-1</sub>)
 
 ![](.gitbook/assets/screen-shot-2020-09-26-at-7.11.16-pm.png)
 
-* n\_mt-1 is m's balance of CoFi tokens in the dividend pool before TX t
-* **F\_mt** is the dividend factor for TX t, it represents how many ETH the CoFi token holder m can claim per CoFi token. F**\_mt** is read from the system variable F**\_t**
-* **F\_mt-1** is the dividend factor for previous TX done by the CoFi token holder m
+* n<sub>mt-1</sub> is m's balance of CoFi tokens in the dividend pool before TX t
+* **F<sub>mt</sub>** is the dividend factor for TX t, it represents how many ETH the CoFi token holder m can claim per CoFi token. F<sub>mt</sub> is read from the system variable F<sub>t</sub>
+* **F<sub>mt-1</sub>** is the dividend factor for previous TX done by the CoFi token holder m
 
 ![](.gitbook/assets/screen-shot-2020-09-26-at-7.18.03-pm.png)
 
-* F\_0 = 0
-* ∑\_y is the total amount of extra fees collected to the saving pool between h\_t to h\_t-1
-* N\_t is the total amount of CoFi token participate in the dividend pool when TX t is submitted
+* F<sub>0</sub> = 0
+* ∑y is the total amount of extra fees collected to the saving pool between h<sub>t</sub> to h<sub>t-1</sub>
+* N<sub>t</sub> is the total amount of CoFi token participate in the dividend pool when TX t is submitted
 
 ## 8. CoFiX DAO \(TBC\)
 
