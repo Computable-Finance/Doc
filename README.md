@@ -260,7 +260,7 @@ at=\(bt/q\)_2400000/\(Xt_Np\*0.3\)
 * L is a threshold parameter, L = 100
 * λ is a balance parameter to further help with the asset pool balance:
 
-![](.gitbook/assets/screen-shot-2020-09-26-at-4.02.59-pm.png)
+![](.gitbook/assets/687474703a2f2f6c617465782e636f6465636f67732e636f6d2f7376672e6c617465783f2535436c616d6264613d2535436c656674253543253742253543626567696e2537426d6174726978253744302e353025323026253230555f253742782537442f555f253742792537442535436765712532303130.svg)
 
 * Ux is the total asset value \(in ETH\) for asset X in trading pair X-Y, Uy is the total asset value \(in ETH\) for asset Y in trading pair X-Y
 
