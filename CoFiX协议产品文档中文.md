@@ -389,3 +389,109 @@ CoFiX 协议社区治理分为2个阶段。
 合约升级 | 对合约进行替换
 DAO资产的管理 | DAO资产，回购、分红、流动性挖矿、出售、投资等等
 
+
+# 附录
+
+## CoFiX价格偏差系数（K）计算说明
+
+### 一、说明
+
+在进行闪兑兑换交易的时候，需要根据获取到的NEST Price来确定价格，由于NEST Price的生效事件和交易事件一般会有一个间隔，因此需要有一个偏差算法，偏差算法的公式里有一个偏差系数（K）作为变量,这里给出K值的影响因素和计算方法。
+
+### 二、K值的影响因素
+
+偏差系数根据最近一段时间的波动率，和当前时间与NEST Price生效时间的时间差来决定。
+
+波动率（volatility）：根据最近连续50个区块的NEST价格来计算。
+
+时间差（T）：当前所在区块和NEST Price生效区块的时间差。
+
+### 三、环境影响
+
+由于以太坊的出块速度可能发生变化，因此用区块作为时间并不能和实际时间形成对应，但是计算模型需要有一个恒定的参考，因此需要计算秒级波动率：
+
+秒级波动率（sigma）：秒是现实世界相对确定的单位，因此计算模型采取秒计波动率作为输入单位。当前由于NEST Price只有区块价格，没有秒级价格数据， 只能由区块波动率和以太坊出块时间（timespan）来推算出秒级波动率。
+
+以太坊出块时间（timespan）：表示以太坊的出块时间（秒），是一个可以配置的参数，根据目前的情况，timespan=14。
+
+### 四、数据处理
+
+1. NEST 预言机的价格是按照区块记录的，每个区块形成一个价格，由该区块内生效的报价按照一定的算法生成，该价格称之为区块价格或者 NEST-Price，如果该区块没有生效报价，则沿用上一个区块价格。这里计算波动率只取产生了有效价格区块的价格，以形成价格序列,同时保存每个区块对应的时间序列。
+2. 剔除异常值，对于极为异常的价格数据，进行剔除。
+
+
+### 五、计算背景
+
+考虑到区块链计算的费用，我们采用指数加权移动平均模型（EWMA）来计算NEST有效报价的波动率。时间比较久远的变量值的影响力相对较低，时间比较近的变量值的影响力相对较高。EWMA需要保留上一个(t-1)的波动率值和最近连续两个价格数据即可，运行也相对简单很多，这是一个很好的减少内存和空间的做法。
+
+### 六、K值的计算
+
+假设NEST区块价格服从几何布朗运动模型或资产价格的对数收益服从几何布朗运动模型。设：
+
+![](http://latex.codecogs.com/svg.latex?u_{t}=\frac{P_{t}}{P_{t-1}}-1)
+
+则当期（t）波动率可指数加权移动平均模型（EWMA）来计算，公式为：
+
+![](http://latex.codecogs.com/svg.latex?{\sigma&space;_{t}^{2}}=\lambda&space;{\sigma&space;_{t-1}^{2}}&plus;(1-\lambda)*{u_{t-1}^{2}}),![](http://latex.codecogs.com/svg.latex?t=2,3...)
+
+其中:![](http://latex.codecogs.com/svg.latex?\lambda\in(0,1)), 因为NEST的有效报价有区块间隔，上述公式可调整为：
+
+![](http://latex.codecogs.com/svg.latex?{\sigma&space;_{t}^{2}}=\lambda{\sigma_{t-1}^{2}}&plus;(1-\lambda)*\frac{{u_{t-1}^{2}}}{n_{t-1}*timespan}),![](http://latex.codecogs.com/svg.latex?t=2,3...)（1）
+
+其中，![](http://latex.codecogs.com/svg.latex?n_{t})代表价格和价格之间的区块间隔数；timespan是以太坊出块平均时间；开始值![](http://latex.codecogs.com/svg.latex?\sigma^{2}&space;_{1}=\frac{u_{1}^{2}}{n_{1}*timespan})；当前设定![](http://latex.codecogs.com/svg.latex?\lambda=0.95&space;)。
+
+以此权重计算，最新的50个波动率占90％以上的权重，各数值的影响力随时间呈指数式递减，时间越靠近当前时刻的数据影响力越大。同样EWMA模型可以对NEST有效价格数据进行处理，![](http://latex.codecogs.com/svg.latex?\bar{P}_{t}=\lambda\bar{P}_{t-1}&plus;(1-\lambda)P_{t})其中![](http://latex.codecogs.com/svg.latex?\bar{P}_{1}=P_{1})，![](http://latex.codecogs.com/svg.latex?t=2,3...)，根据NEST价格数据，价格![](http://latex.codecogs.com/svg.latex?P_{t})比EWMA价格![](http://latex.codecogs.com/svg.latex?\bar{P}_{t})高出或低于2.5％以上的概率仅为0.19％。因此可以用公式![](http://latex.codecogs.com/svg.latex?\left|P_{t}/\bar{P}_{t-1}-1&space;\right|<2.5%)来限制正常价格取值范围，排除异常价格数据。
+
+我们再用线性公式来估计NEST价格的偏差的上限：
+
+![](http://latex.codecogs.com/svg.latex?a(\sigma)=-0.0014687&plus;19.8898*\sigma&plus;gascost/10) （2）
+
+其中：gascost=gas price*gasconsumed per transcation, 当前设定gascost=0.03，可根据实际情况进行调整。
+
+T 为时间延迟：T=（打包成功区块高度-最近有效NEST价格所在区块高度）* timespan。
+
+再根据公式（1）和（2）计算出![](http://latex.codecogs.com/svg.latex?\sigma)和![](http://latex.codecogs.com/svg.latex?a)，代入做市商预期亏损最大边界的计算公式：
+
+![](http://latex.codecogs.com/svg.latex?K_{0}=\frac{a}{1-a}&plus;\frac{1}{1-a}\frac{\sigma&space;\sqrt{2T}}{\sqrt{\pi&space;}})
+
+即可算出![](http://latex.codecogs.com/svg.latex?K_{0})的值。由![](http://latex.codecogs.com/svg.latex?K_{0})的值，通过下面的线性公式得到![](http://latex.codecogs.com/svg.latex?K)的值。
+
+![](http://latex.codecogs.com/svg.latex?K^{'}=\gamma*K_{0})
+
+可设定：![](http://latex.codecogs.com/svg.latex?\gamma=0.5&space;)，注意![](http://latex.codecogs.com/svg.latex?\gamma)是可调整的参数，![](http://latex.codecogs.com/svg.latex?0<\gamma<1)。
+
+此外，在实践中为了更节省成本，考虑计算所有![](http://latex.codecogs.com/svg.latex?(T,\sigma&space;))。对的![](http://latex.codecogs.com/svg.latex?K_{0})平均值。计算公式如下：
+
+![](http://latex.codecogs.com/svg.latex?\bar{K}_{0}=E[K_{0}(T,\sigma)])
+
+这里的![](http://latex.codecogs.com/svg.latex?\bar{K}_{0})就是![](http://latex.codecogs.com/svg.latex?K_{0})在随机向量![](http://latex.codecogs.com/svg.latex?(T,\sigma&space;))联合分布下的期望。
+
+基于2020年7月13日到2020年9月13日的数据，我们估计得到![](http://latex.codecogs.com/svg.latex?K_{0})的期望值![](http://latex.codecogs.com/svg.latex?\bar{K}_{0}\approx0.005)
+
+通过![](http://latex.codecogs.com/svg.latex?\bar{K}_{0})来调整执行价格，做市商所面临的价格偏差（由于延时![](http://latex.codecogs.com/svg.latex?T)和波动率![](http://latex.codecogs.com/svg.latex?\sigma)给带来的风险），在长时间内应能得到充分完全的补偿。
+
+#### 冲击成本
+
+当CoFiX资产池规模足够大的时候，单笔交易或者单位时间累积交易很难达到资产的上限，但单笔的大交易量可能影响做市商的对冲成本。因此单位时间内数额较大的交易应当支付一定的价差，此价差称之为冲击成本C（给定交易量对价格的影响）。不考虑冲击成本时的K值，加上冲击成本，得到对做市商的价差补偿系数![](http://latex.codecogs.com/svg.latex?K_{m})的值：
+
+![](http://latex.codecogs.com/svg.latex?K_{m}=K&plus;C)
+
+由于做市商可以在全市场的所有交易所对冲交易，因此这里的冲击成本要考虑全市场的交易情况，因此在一般的交易行为下，不太会发生，只有巨额交易才需要，其规模取决于交易所的交易深度，可以用如下线性公式来估计冲击成成本：
+
+![](http://latex.codecogs.com/svg.latex?C=\alpha&plus;\beta*VOL)
+
+其中VOL为交易的手数，我们基于前10大数字货币交易所买卖ETH的深度行情数据估计出的结果如下：
+
+买入时：![](http://latex.codecogs.com/svg.latex?\alpha=2.570e-05,\beta=8.542e-07)
+
+卖出时：![](http://latex.codecogs.com/svg.latex?\alpha=-1.171e-04,\beta=8.386e-07)
+
+交易量较小时冲击成本可以忽略不计，C的计算公式当前设定如下：
+
+![](http://latex.codecogs.com/svg.latex?c=%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D0%20&%20VOL%3C500%20%5C%5C%5Calpha%20&plus;%5Cbeta%20*VOL%20&%20VOL%5Cgeq%20500%20%5C%5C%5Cend%7Bmatrix%7D%5Cright.)
+
+### 七、其他问题
+
+1. 当K值实时更新时，由于K值的计算受多种因素影响，可能导致极不合理的价格，从而给系统或者实际用户造成损失，规定停机条件如下：如果![](http://latex.codecogs.com/svg.latex?K_{0})值大于5%，停机。如果使用期望值![](http://latex.codecogs.com/svg.latex?\bar{K}_{0}) 来对做市商进行补偿，则不存在![](http://latex.codecogs.com/svg.latex?K_{0})的停机条件。
+
+2. K值的计算过程较复杂，会消耗较多的gas，因此需要对K值缓存，在一段时间内，采用之前已经计算出来的K值，具体缓存时间作为一个参数配置，初始值需要根据经验确定。
