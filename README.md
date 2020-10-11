@@ -221,13 +221,13 @@ Dividend and Governance, produced through liquidity mining.
 
 * **Mining pool A, the trading mining pool:** The token amount generated per TX is based on the extra fees collected from that TX, the token generation speed \(Token per block\) of the mining pool B, the total amount of the corresponding asset pool XToken participate in mining, and the Np \(net worth per share of the corresponding asset pool\) 
 * **Mining pool B, the liquidity mining pool: bt** is the _\*\*_amount of CoFi tokens generated per block, bt ≥1, start with b0=4, the amount will be reduced by 20% for every 2,400,000 blocks and kept the integer only. For example b1=3, b2=2, b3=1, b4=1, b5=1, b6=1 ...
-* **Mining pool C, the node mining pool: ct** is the amount of CoFi tokens generated per block, ct = bt/9
+* **Mining pool C, the node mining pool(Development team and early supporters): ct** is the amount of CoFi tokens generated per block, ct = bt/9
 
 **General token distribution:**
 
 * 80% of the tokens generated from **Mining pool A** goes to traders, 10% goes to the liquidity providers
 
-  of the corresponding asset pool, 10% goes to the nodes.
+  of the corresponding asset pool, 10% goes to the nodes(Development team and early supporters).
 
 * 100% of the tokens generated from **Mining pool B** goes to liquidity providers, distributed evenly per asset pool, liquidity providers can claim the tokens from the liquidity mining rewards pool based on the XToken amount they put in for liquidity mining.
 * 100% of the tokens generated from **Mining pool C** goes to the nodes. Nodes can claim the tokens from the node rewards pool based on the node token amount they are holding. So the nodes always receive 10% of the total token generated through the 3 mining pools.
