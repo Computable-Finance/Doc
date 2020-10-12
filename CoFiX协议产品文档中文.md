@@ -173,17 +173,19 @@ Alice 转入 c 个 XToken ，那么可以兑换出来的 ETH 数量 e 为：
 
 ![](http://latex.codecogs.com/svg.latex?x=(a/P_{1,b}^{'})*(1-\theta))
 
+其中：![](http://latex.codecogs.com/svg.latex?P_{1,b}^{'}=P_{1}*(1&plus;K_{1}))，![](http://latex.codecogs.com/svg.latex?P_{1})为ETH/USDT 预言机价格, ![](http://latex.codecogs.com/svg.latex?K_{1})为ETH:USDT 交易池价格补偿系数。
+
 2. 使用 x 个  ETH 兑换出 y 个 HBTC
 
 ![](http://latex.codecogs.com/svg.latex?y=x*P_{2,s}^{'}*(1-\theta&space;))
+
+其中：![](http://latex.codecogs.com/svg.latex?P_{2,s}^{'}=P_{2}*(1-K_{2})),![](http://latex.codecogs.com/svg.latex?P_{2})为ETH/HBTC 预言机价格,![](http://latex.codecogs.com/svg.latex?K_{2})为ETH:HBTC交易池价格补偿系数; ![](http://latex.codecogs.com/svg.latex?\theta)为交易手续费系数。
 
 3. 1 和 2步骤合并可以得出，使用 a 个 USDT 可以兑换出的 HBTC数量为
 
 ![](http://latex.codecogs.com/svg.latex?y=(a/P_{1,b}^{'})*P_{2,s}^{'}*(1-\theta&space;)^{2})
 
-其中：
-
-![](http://latex.codecogs.com/svg.latex?P_{1})为ETH/USDT预言机价格, ![](http://latex.codecogs.com/svg.latex?K_{1})为ETH:USDT交易池价格补偿系数;![](http://latex.codecogs.com/svg.latex?P_{2})为ETH/HBTC预言机价格 ,![](http://latex.codecogs.com/svg.latex?K_{2})为ETH:HBTC交易池价格补偿系数; ![](http://latex.codecogs.com/svg.latex?\theta)为交易手续费系数。
+其中：![](http://latex.codecogs.com/svg.latex?P_{1,b}^{'}=P_{1}*(1&plus;K_{1}))，![](http://latex.codecogs.com/svg.latex?P_{1})为ETH/USDT预言机价格, ![](http://latex.codecogs.com/svg.latex?K_{1})为ETH:USDT交易池价格补偿系数;![](http://latex.codecogs.com/svg.latex?P_{2,s}^{'}=P_{2}*(1-K_{2}))，![](http://latex.codecogs.com/svg.latex?P_{2})为ETH/HBTC预言机价格 ,![](http://latex.codecogs.com/svg.latex?K_{2})为ETH:HBTC交易池价格补偿系数; ![](http://latex.codecogs.com/svg.latex?\theta)为交易手续费系数。
 
 ## 6、风险控制
 
@@ -214,22 +216,22 @@ Alice 转入 c 个 XToken ，那么可以兑换出来的 ETH 数量 e 为：
 
 整个系统总量无上限，但通胀率会随着时间推移逐渐下降。
 
-系统有三个矿池，即交易矿池A，做市商矿池B，节点矿池C（开发团队和早期支持者），其数量如下：
+系统有三个矿池，即交易矿池A，做市商矿池B，节点矿池C，其数量如下：
 
 矿池A：动态出矿，总量不固定，单笔交易的出矿量和佣金、最近300个区块的交易密度、做市商资金池的规模及平衡性相关，每笔交易出矿中，80%由交易者获得，10%分给对应的做市商矿池，10%归属节点矿池。
 
-矿池B：由固定出矿和浮动出矿两部分，固定出矿部分，每个区块出矿9个，每240万个区块后衰减到上期值的80%，960万个区块后不再衰减，按照每个块出矿；浮动部分为交易出矿的10%。
+矿池B：由固定出矿和浮动出矿两部分，固定出矿部分，每个区块出矿9个，每240万个区块后衰减到上期值的80%，960万个区块后不再衰减，按照每个块出矿3.6864；浮动部分为交易出矿的10%。
 
-矿池C：当由固定出矿和浮动出矿两部分，固定出矿部分，每个区块出矿1个，每240万个区块后衰减到上期值的80%，960万个区块后不再衰减，按照每个块出矿；浮动部分为交易出矿的10%。
+矿池C：当由固定出矿和浮动出矿两部分，固定出矿部分，每个区块出矿1个，每240万个区块后衰减到上期值的80%，960万个区块后不再衰减，按照每个块出矿0.4096；浮动部分为交易出矿的10%。
 
 ### 7.2、交易者挖矿模型：
 
-交易者每笔挖矿都会产出一定的CoFi，其中80%归该交易者，10%归节点矿池（开发团队和早期支持者），10%归做市商矿池。每笔产出的CoFi主要取决于该笔交易支付的佣金：
+交易者每笔挖矿都会产出一定的CoFi，其中80%归该交易者，10%归节点矿池，10%归做市商矿池。每笔产出的CoFi主要取决于该笔交易支付的佣金：
 
 1. 假设该笔交易的规模为![](http://latex.codecogs.com/svg.latex?X_{t})(ETH)，佣金为![](http://latex.codecogs.com/svg.latex?Y_{t}=X_{t}*\theta&space;)(ETH)；
 2. 单位佣金（1ETH）挖出的CoFi标准量为at  , at的计算公式如下：
 
-![](http://latex.codecogs.com/svg.latex?a_{t}=\frac{b_{t}*\varphi*2400000}{X_{t}*N_{p}*0.3})
+![](http://latex.codecogs.com/svg.latex?a_{t}=\frac{b_{t}*\varphi*2400000}{X_{t}*N_{p}*r})
 
 公式注释：
 
@@ -239,11 +241,15 @@ Alice 转入 c 个 XToken ，那么可以兑换出来的 ETH 数量 e 为：
 
 (3) ![](http://latex.codecogs.com/svg.latex?N_{p})为当前交易对池子的净值；
 
-(4) ![](http://latex.codecogs.com/svg.latex?\varphi)为对应交易对的出矿系数，也即当前交易对池子的出矿占比。
+(4) ![](http://latex.codecogs.com/svg.latex?\varphi)为对应交易对的出矿系数，也即当前交易对池子的出矿占比。![](http://latex.codecogs.com/svg.latex?\varphi_{1})为ETH-USDT交易对的出矿系数，![](http://latex.codecogs.com/svg.latex?\varphi_{2})为ETH-HBTC交易对的出矿系数，当前
+
+![](http://latex.codecogs.com/svg.latex?\varphi&space;_{1}=2/3\approx0.67,\varphi&space;_{2}=1/3\approx&space;0.33)
+
+(5) ![](http://latex.codecogs.com/svg.latex?r)为做市资产的预期收益率, 当前设![](http://latex.codecogs.com/svg.latex?r=0.3)。
 
 3. 考虑到连续若干笔交易规模过大，会导致出矿不受控制，因此我们设计了密度衰减指标，其核心参数如下：
 
-(1) 单笔交易触发密度衰减的阈值为![](http://latex.codecogs.com/svg.latex?L*\theta*a_{t})，其中![](http://latex.codecogs.com/svg.latex?L)为做市商对应矿池的资产总额（ETH）的千分之一，即![](http://latex.codecogs.com/svg.latex?L=\frac{X_{t}*N_{p}}{1000})，![](http://latex.codecogs.com/svg.latex?L)的最小值为100（ETH）；
+(1) 单笔交易触发密度衰减的阈值为![](http://latex.codecogs.com/svg.latex?L*\theta*a_{t})，其中![](http://latex.codecogs.com/svg.latex?L=X_{t}*N_{p}*I)，I为衰减阈值系数，当前设定I=0.002，![](http://latex.codecogs.com/svg.latex?L)的最小值为100（ETH）；
 
 (2) 假设本次交易和上次交易之间的区块间隔为s，则密度参数:
 
@@ -255,11 +261,11 @@ Alice 转入 c 个 XToken ，那么可以兑换出来的 ETH 数量 e 为：
 
 假设交易者用资产![](http://latex.codecogs.com/svg.latex?V_{x})兑换资产![](http://latex.codecogs.com/svg.latex?V_{y})， 交易池内资产![](http://latex.codecogs.com/svg.latex?V_{x})总量为![](http://latex.codecogs.com/svg.latex?U_{x})，资产![](http://latex.codecogs.com/svg.latex?V_{y})总量为![](http://latex.codecogs.com/svg.latex?U_{y})（按交易时的价格换算成ETH），![](http://latex.codecogs.com/svg.latex?\lambda&space;)的值的大小取决于![](http://latex.codecogs.com/svg.latex?U_{x}/U_{y})的值的大小，具体公式如下： 
 
-![](http://latex.codecogs.com/svg.latex?%5Clambda=%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D0.50%20&%20U_%7Bx%7D/U_%7By%7D%5Cgeq%2010%20%5C%5C0.75%20&%2010%3EU_%7Bx%7D/U_%7By%7D%5Cgeq%203%20%5C%5C1.00%20&%203%3EU_%7Bx%7D/U_%7By%7D%5Cgeq%200.33%20%5C%5C1.33%20&%200.33%3EU_%7Bx%7D/U_%7By%7D%5Cgeq%200.1%20%5C%5C2.0%20&%20U_%7Bx%7D/U_%7By%7D%3C%200.1%20%5C%5C%5Cend%7Bmatrix%7D%5Cright.)
+![](http://latex.codecogs.com/svg.latex?%5Clambda=%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D0.25%20&%20U_%7Bx%7D/U_%7By%7D%5Cgeqslant%2010%20%5C%5C%200.50%20&%2010%3E%20U_%7Bx%7D/U_%7By%7D%5Cgeqslant%203%20%5C%5C1.00%20&%203%3E%20U_%7Bx%7D/U_%7By%7D%5Cgeqslant%200.33%20%20%5C%5C2.00%20&%200.33%3E%20U_%7Bx%7D/U_%7By%7D%5Cgeqslant%200.1%20%20%5C%5C4.00%20&%20U_%7Bx%7D/U_%7By%7D%3C%200.1%20%20%5C%5C%5Cend%7Bmatrix%7D%5Cright.)
 
 (4) 出矿量公式：
 
-![](http://latex.codecogs.com/svg.latex?y_{t})对应的出矿量![](http://latex.codecogs.com/svg.latex?A(y_{t}))计算如下：
+![](http://latex.codecogs.com/svg.latex?y_{t})对应的交易者出矿量![](http://latex.codecogs.com/svg.latex?A(y_{t}))计算如下：
 
 ![](http://latex.codecogs.com/svg.latex?A(y_%7Bt%7D)=%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D0.8*y_%7Bt%7D*a_%7Bt%7D*%5Clambda&f_%7Bt%7D%5Cleq%20L*%5Ctheta*a_%7Bt%7D%5C%5C0.8*y_%7Bt%7D*a_%7Bt%7D*L*%5Ctheta*a_%7Bt%7D*(2f_%7Bt%7D-L*%5Ctheta*a_%7Bt%7D)/%7Bf_%7Bt%7D%7D%5E%7B2%7D*%5Clambda&f_%7Bt%7D%3EL*%5Ctheta*a_%7Bt%7D%5C%5C%5Cend%7Bmatrix%7D%5Cright.)
 
@@ -286,7 +292,7 @@ Alice 转入 c 个 XToken ，那么可以兑换出来的 ETH 数量 e 为：
 
 公式注释：
 
-(1) 为矿池B在![](http://latex.codecogs.com/svg.latex?h_{t})时刻的单位区块固定部分的出矿量,初始![](http://latex.codecogs.com/svg.latex?b_{0}=9)，过240万个区块衰减到上期值的80%，960万个区块后不再衰减，按照每个块出矿；
+(1) 为矿池B在![](http://latex.codecogs.com/svg.latex?h_{t})时刻的单位区块固定部分的出矿量,初始![](http://latex.codecogs.com/svg.latex?b_{0}=9)，过240万个区块衰减到上期值的80%，960万个区块后不再衰减，按照每个块出矿3.6864；
 
 (2) ![](http://latex.codecogs.com/svg.latex?I_{j}(Y_{i}))为![](http://latex.codecogs.com/svg.latex?h_{t-1})到![](http://latex.codecogs.com/svg.latex?h_{t})期间j交易池交易挖矿分给做市商的部分；
 
@@ -294,9 +300,9 @@ Alice 转入 c 个 XToken ，那么可以兑换出来的 ETH 数量 e 为：
 
 (4) ![](http://latex.codecogs.com/svg.latex?\varphi&space;)为对应矿池j的出矿系数，也即当前交易对池子的出矿占比。
 
-### 7.4、节点（开发团队和早期支持者）挖矿模型：
+### 7.4、节点挖矿模型：
 
-节点（开发团队和早期支持者）总量为100个，与做市商类似，节点持有者将节点存在节点矿池合约，并在每次存入、取出、领取操作时根据给定的算法获得对应的CoFi。和做市商类似，节点矿池也存在一个出矿系数，每次操作基于 该挖矿系数出矿。
+节点总量为100个，与做市商类似，节点持有者将节点存在节点矿池合约，并在每次存入、取出、领取操作时根据给定的算法获得对应的CoFi。和做市商类似，节点矿池也存在一个出矿系数，每次操作基于 该挖矿系数出矿。
 
 假设某节点持有人m在时刻![](http://latex.codecogs.com/svg.latex?h_{m,t-1})，(![](http://latex.codecogs.com/svg.latex?h_{m,t-1})表示m的第t-1次操作对应的时刻)，存入矿池合约的节点的数量余额![](http://latex.codecogs.com/svg.latex?n_{m,t-1})，则m在其后一个时刻![](http://latex.codecogs.com/svg.latex?h_{m,t})，无论执行存入、取出、领取三种操作的任何一种，都可以挖出CoFi，且其出矿量为：
 
@@ -314,7 +320,7 @@ Alice 转入 c 个 XToken ，那么可以兑换出来的 ETH 数量 e 为：
 
 公式注释：
 
-(1) ![](http://latex.codecogs.com/svg.latex?c_{t})为矿池C在![](http://latex.codecogs.com/svg.latex?h_{t})时刻的单位区块固定出矿部分，每个区块出矿1个，每240万个区块后衰减到上期值的80%，960万个区块后不再衰减，按照每个块出矿；
+(1) ![](http://latex.codecogs.com/svg.latex?c_{t})为矿池C在![](http://latex.codecogs.com/svg.latex?h_{t})时刻的单位区块固定出矿部分，每个区块出矿1个，每240万个区块后衰减到上期值的80%，960万个区块后不再衰减，按照每个块出矿 0.4096 ；
 
 (2) ![](http://latex.codecogs.com/svg.latex?\Sigma&space;R(y_{t}))为![](http://latex.codecogs.com/svg.latex?h_{t-1})到![](http://latex.codecogs.com/svg.latex?h_{t})期间交易池交易挖矿分给节点的部分；
 
@@ -322,7 +328,7 @@ Alice 转入 c 个 XToken ，那么可以兑换出来的 ETH 数量 e 为：
 
 ### 7.5、CoFi分红及回购模型：
 
-参与挖矿的交易池，其所有交易佣金ETH进入系统分红池，其中ɑ比例用于分红，1-ɑ用于回购，回购机制在CoFi上线CoFiX后由DAO另行设计。
+参与挖矿的交易池，其所有交易佣金ETH进入系统分红池，其中ɑ比例用于分红，![](http://latex.codecogs.com/svg.latex?1-\alpha&space;)用于回购，当前![](http://latex.codecogs.com/svg.latex?\alpha=20%)，回购机制在CoFi上线CoFiX后由DAO另行设计。
 
 假设CoFi持有人m在时刻![](http://latex.codecogs.com/svg.latex?h_{m,t-1})，(![](http://latex.codecogs.com/svg.latex?h_{m,t-1})表示m的第t-1次操作对应的时刻)，存入分红合约的CoFi数量余额![](http://latex.codecogs.com/svg.latex?n_{m,t-1})，则m在其后一个时刻![](http://latex.codecogs.com/svg.latex?h_{m,t})，无论执行存入、取出、领取三种操作的任何一种，都可以分得ETH，且分红数量为：
 
@@ -349,7 +355,7 @@ Alice 转入 c 个 XToken ，那么可以兑换出来的 ETH 数量 e 为：
 
 CoFiX 协议社区治理分为2个阶段。
 
-第一阶段，由多签超级管理员地址来主导，负责对 CoFiX 早期阶段进行合约升级、参数调整。管理员地址主要由社区 KOL、早期投资人、合作项目方等多方组成。
+第一阶段，由 10个多签超级管理员地址来主导，负责对 CoFiX 早期阶段进行合约升级、参数调整。管理员地址主要由社区 KOL、早期投资人、合作项目方等多方组成。
 
 第二阶段，超级管理员退出，进入社区治理阶段，合约升级、参数调整等决议需经过社区投票通过后方可执行。
 
