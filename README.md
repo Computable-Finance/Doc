@@ -358,5 +358,9 @@ CoFi token holder m makes a dividend claiming TX t:
 * ∑y is the total amount of extra fees collected to the saving pool between ht to ht-1
 * Nt is the total amount of CoFi token participate in the dividend pool when TX t is submitted
 
-## 8. CoFiX DAO \(TBC\)
+## [8. CoFiX DAO \(TBC\)](https://github.com/Computable-Finance/Doc/blob/master/CoFiX%E5%8D%8F%E8%AE%AE%E4%BA%A7%E5%93%81%E6%96%87%E6%A1%A3%E4%B8%AD%E6%96%87.md#8%E6%B2%BB%E7%90%86--%E5%BE%85%E5%AE%9Acofix-dao)
+
+## [CoFiX兑换协议产品文档](https://github.com/Computable-Finance/Doc/blob/master/CoFiX%E5%8D%8F%E8%AE%AE%E4%BA%A7%E5%93%81%E6%96%87%E6%A1%A3%E4%B8%AD%E6%96%87.md)
+
+### 
 
