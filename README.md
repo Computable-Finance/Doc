@@ -278,7 +278,7 @@ For trading TX t:
 
 #### Token generation mechanism:
 
-* bt is the amount of CoFi tokens generated per block, bt ≥1, start with b0=4, the amount will be reduced by 20% for every 2,400,000 blocks and kept the integer only. For example b1=3, b2=2, b3=1, b4=1, b5=1, b6=1 ...
+* bt is the amount of CoFi tokens generated per block, bt ≥1, start with b0=9, the amount will be reduced by 20% for every 2,400,000 blocks and kept the integer only(3.6864). 
 
 #### **Token distribution** mechanism**:**
 
