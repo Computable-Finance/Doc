@@ -140,6 +140,36 @@ The amount **u** of USDT that can be redeemed is:
 
 ![](.gitbook/assets/image%20%282%29.png)
 
+#### Price impact:
+
+* get ETH
+
+When removing volume _&lt; 500 ETH: Price impact C’b =0_ 
+
+_When removing volume_ &gt;= 500 ETH: Price impact C’b = α + β \*Trading volume in ETH α=0.0000257, β=0.0000008542
+
+ N’p=\(Au/P’b+Ae\)/S 
+
+P’b= P\*\[1+\(K+C’b\)\]
+
+* Get ERC-20
+
+_When Removing volume &lt; 500 ETH: Price impact C’b =0 C’s=0 c_ 
+
+_When Removing volume_ &gt;= 500 ETH: Price impact C’b = α + β\*_Trading volume in ETH_ 
+
+_α=0.0000257, β=0.0000008542_ 
+
+_C’s = α + β_ Trading volume in ETH 
+
+α=-0.0001171, β=0.0000008386
+
+ N’p=\(Au/P’b+Ae\)/S 
+
+P’b= P\*\[1+\(K+ C’b\)\]
+
+P’s= P\*\[1-\(K+C’s\)\]
+
 ## 5. Trading mechanism
 
 ### 5.1 ETH to ERC-20 transaction
@@ -183,6 +213,22 @@ Using amount **x** of ETH to exchange amount **y** of DAI
 Combine Steps 1 and 2
 
 ![](.gitbook/assets/image%20%284%29.png)
+
+### Price impact:
+
+_When trading volume &lt; 500 ETH: Price impact C’b =0 C’s=0 c_ 
+
+_When trading volume_ &gt;= 500 ETH: Price impact C’b = α + β\*_Trading volume in ETH_ 
+
+_α=0.0000257, β=0.0000008542_ 
+
+_C’s = α + β_ Trading volume in ETH 
+
+α=-0.0001171, β=0.0000008386
+
+P’b= P\*\[1+\(K+ C’b\)\]
+
+P’s= P\*\[1-\(K+C’s\)\]
 
 ## 6. Additional risk control
 
@@ -278,7 +324,7 @@ For trading TX t:
 
 #### Token generation mechanism:
 
-* bt is the amount of CoFi tokens generated per block, bt ≥1, start with b0=9, the amount will be reduced by 20% for every 2,400,000 blocks and kept the integer only(3.6864). 
+* bt is the amount of CoFi tokens generated per block, bt ≥1, start with b0=9, the amount will be reduced by 20% for every 2,400,000 blocks and kept the integer only\(3.6864\). 
 
 #### **Token distribution** mechanism**:**
 
@@ -361,6 +407,4 @@ CoFi token holder m makes a dividend claiming TX t:
 ## [8. CoFiX DAO \(TBC\)](https://github.com/Computable-Finance/Doc/blob/master/CoFiX%E5%8D%8F%E8%AE%AE%E4%BA%A7%E5%93%81%E6%96%87%E6%A1%A3%E4%B8%AD%E6%96%87.md#8%E6%B2%BB%E7%90%86--%E5%BE%85%E5%AE%9Acofix-dao)
 
 ## [CoFiX兑换协议产品文档](https://github.com/Computable-Finance/Doc/blob/master/CoFiX%E5%8D%8F%E8%AE%AE%E4%BA%A7%E5%93%81%E6%96%87%E6%A1%A3%E4%B8%AD%E6%96%87.md)
-
-### 
 
