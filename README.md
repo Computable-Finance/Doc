@@ -140,7 +140,7 @@ The amount **u** of USDT that can be redeemed is:
 
 ![](.gitbook/assets/image%20%282%29.png)
 
-#### Price impact:
+### Share redemption price impact:
 
 * get ETH
 
@@ -214,7 +214,7 @@ Combine Steps 1 and 2
 
 ![](.gitbook/assets/image%20%284%29.png)
 
-### Price impact:
+### Trading price impact:
 
 _When trading volume &lt; 500 ETH: Price impact C’b =0 C’s=0 c_ 
 
