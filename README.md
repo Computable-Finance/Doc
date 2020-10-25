@@ -299,7 +299,7 @@ For trading TX t:
 * φ is the mining factor for diffrerent asset pools, ETH-USDT is 2/3, ETH-HBTC is 1/3
 * The actual amount of CoFo token generated for TX t is A\(yt\)
 
-![](.gitbook/assets/screen-shot-2020-09-29-at-1.29.19-pm.png)
+![](.gitbook/assets/img_5263.jpg)
 
 * The block interval between the trading TX t and the previous trading TX is s, the token density parameter is ft
 
