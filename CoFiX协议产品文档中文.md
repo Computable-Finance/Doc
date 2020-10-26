@@ -91,6 +91,8 @@ ETH：HBTC 交易池，价格从 NEST 的 ETH/HBTC 预言机调用。
 
 赎回时：![](http://latex.codecogs.com/svg.latex?N_{p}^{'}=(A_{u}/P_{b}^{'}&plus;A_{e})/S)
 
+计算交易规模时：![](http://latex.codecogs.com/svg.latex?N_{pnok}=(A_{u}/P&plus;A_{e})/S)
+
 其中：
 
 S为ETH:USDT 资产池总发行份额 
