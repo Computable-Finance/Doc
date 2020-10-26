@@ -286,7 +286,7 @@ In the TX of every trade, A\(yt\) amount of token is generated.
 
 For trading TX t:
 
-* The trading volume is Xt ETH, the extra fees collected from that TX t is Yt=Xt\*θ ETH
+* The trading volume is xt ETH, the extra fees collected from that TX t is yt=xt\*θ ETH
 * The base amount of CoFi tokens generated for TX t is at
 
 ![](.gitbook/assets/screen-shot-2020-10-15-at-12.00.44-pm.png)
