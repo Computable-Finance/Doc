@@ -84,7 +84,7 @@ Anyone can choose a price pair from the NEST oracle to create a corresponding Co
 
 Taking ETH-USDT as an example, when the market maker pool is created:
 
-**Np** is the net worth of each share\(XToken\), it is represented by its ETH value: initially Np=1
+**Npnok** is the net worth of each share\(XToken\), it is represented by its ETH value: initially Npnok=1
 
 The quantity of ETH market-making assets =**Ae**
 
@@ -94,19 +94,23 @@ The initial amount of share\(XToken\) is S0:
 
 ![](.gitbook/assets/screen-shot-2020-09-26-at-2.18.32-pm.png)
 
-### 4.3 Market maker net worth of each share\(XToken\), Np
+### 4.3 Market maker net worth of each share\(XToken\), Npnok
 
-**Np** is The net worth of each share\(XToken\) in an asset pool, it is represented by its ETH value.
+**Npnok** is The net worth of each share\(XToken\) in an asset pool, it is represented by its ETH value.
 
-Whenever there is a transaction, subscription, or redemption operation; Np is updated.
+Whenever there is a transaction, subscription, or redemption operation; Npnok is updated.
 
 Taking the ETH-USDT asset pool as an example:
 
 ETH-USDT asset pool total issuance share is **S \(The total amount of XToken\)**
 
-The formula for calculating the asset pool’s net worth **Np** is:
+The formula for calculating the asset pool’s net worth **Npnok** is:
 
 ![](.gitbook/assets/image%20%288%29.png)
+
+When calculating the trading volume:
+
+![](.gitbook/assets/screen-shot-2020-10-26-at-3.16.02-pm.png)
 
 ### 4.4 Share\(XToken\) subscription
 
@@ -144,27 +148,27 @@ The amount **u** of USDT that can be redeemed is:
 
 * get ETH
 
-When removing volume _&lt; 500 ETH: Price impact C’b =0_ 
+When removing volume _&lt; 500 ETH: Price impact C’b =0_
 
 _When removing volume_ &gt;= 500 ETH: Price impact C’b = α + β \*Trading volume in ETH α=0.0000257, β=0.0000008542
 
- N’p=\(Au/P’b+Ae\)/S 
+N’p=\(Au/P’b+Ae\)/S
 
 P’b= P\*\[1+\(K+C’b\)\]
 
 * Get ERC-20
 
-_When Removing volume &lt; 500 ETH: Price impact C’b =0 C’s=0 c_ 
+_When Removing volume &lt; 500 ETH: Price impact C’b =0 C’s=0 c_
 
-_When Removing volume_ &gt;= 500 ETH: Price impact C’b = α + β\*_Trading volume in ETH_ 
+_When Removing volume_ &gt;= 500 ETH: Price impact C’b = α + β\*_Trading volume in ETH_
 
-_α=0.0000257, β=0.0000008542_ 
+_α=0.0000257, β=0.0000008542_
 
-_C’s = α + β_ Trading volume in ETH 
+_C’s = α + β_ Trading volume in ETH
 
 α=-0.0001171, β=0.0000008386
 
- N’p=\(Au/P’b+Ae\)/S 
+N’p=\(Au/P’b+Ae\)/S
 
 P’b= P\*\[1+\(K+ C’b\)\]
 
@@ -216,13 +220,13 @@ Combine Steps 1 and 2
 
 ### Trading price impact:
 
-_When trading volume &lt; 500 ETH: Price impact C’b =0 C’s=0 c_ 
+_When trading volume &lt; 500 ETH: Price impact C’b =0 C’s=0 c_
 
-_When trading volume_ &gt;= 500 ETH: Price impact C’b = α + β\*_Trading volume in ETH_ 
+_When trading volume_ &gt;= 500 ETH: Price impact C’b = α + β\*_Trading volume in ETH_
 
-_α=0.0000257, β=0.0000008542_ 
+_α=0.0000257, β=0.0000008542_
 
-_C’s = α + β_ Trading volume in ETH 
+_C’s = α + β_ Trading volume in ETH
 
 α=-0.0001171, β=0.0000008386
 
