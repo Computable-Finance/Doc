@@ -231,7 +231,7 @@ Alice 转入 c 个 XToken ，那么可以兑换出来的 ETH 数量 e 为：
 1. 假设该笔交易的规模为![](http://latex.codecogs.com/svg.latex?x_{t})(ETH)，佣金为![](http://latex.codecogs.com/svg.latex?y_{t}=x_{t}*\theta&space;)(ETH)；
 2. 单位佣金（1ETH）挖出的CoFi标准量为at  , at的计算公式如下：
 
-![](http://latex.codecogs.com/svg.latex?a_{t}=\frac{b_{t}*\varphi*2400000}{X_{t}*N_{p}*r})
+![](http://latex.codecogs.com/svg.latex?a_{t}=\frac{b_{t}*\varphi*2400000}{X_{t}*N_{pnok}*r})
 
 公式注释：
 
@@ -239,7 +239,7 @@ Alice 转入 c 个 XToken ，那么可以兑换出来的 ETH 数量 e 为：
 
 (2) ![](http://latex.codecogs.com/svg.latex?X_{t})为当前交易对池子的总份额；
 
-(3) ![](http://latex.codecogs.com/svg.latex?N_{p})为当前交易对池子的净值；
+(3) ![](http://latex.codecogs.com/svg.latex?N_{pnok})为当前交易对池子的净值；
 
 (4) ![](http://latex.codecogs.com/svg.latex?\varphi)为对应交易对的出矿系数，也即当前交易对池子的出矿占比。![](http://latex.codecogs.com/svg.latex?\varphi_{1})为ETH-USDT交易对的出矿系数，![](http://latex.codecogs.com/svg.latex?\varphi_{2})为ETH-HBTC交易对的出矿系数，当前
 
