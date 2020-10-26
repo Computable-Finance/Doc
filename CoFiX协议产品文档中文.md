@@ -228,7 +228,7 @@ Alice 转入 c 个 XToken ，那么可以兑换出来的 ETH 数量 e 为：
 
 交易者每笔挖矿都会产出一定的CoFi，其中80%归该交易者，10%归节点矿池，10%归做市商矿池。每笔产出的CoFi主要取决于该笔交易支付的佣金：
 
-1. 假设该笔交易的规模为![](http://latex.codecogs.com/svg.latex?X_{t})(ETH)，佣金为![](http://latex.codecogs.com/svg.latex?Y_{t}=X_{t}*\theta&space;)(ETH)；
+1. 假设该笔交易的规模为![](http://latex.codecogs.com/svg.latex?x_{t})(ETH)，佣金为![](http://latex.codecogs.com/svg.latex?y_{t}=x_{t}*\theta&space;)(ETH)；
 2. 单位佣金（1ETH）挖出的CoFi标准量为at  , at的计算公式如下：
 
 ![](http://latex.codecogs.com/svg.latex?a_{t}=\frac{b_{t}*\varphi*2400000}{X_{t}*N_{p}*r})
