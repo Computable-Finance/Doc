@@ -293,14 +293,14 @@ For trading TX t:
 * The trading volume is xt ETH, the extra fees collected from that TX t is yt=xt\*θ ETH
 * The base amount of CoFi tokens generated for TX t is at
 
-![](.gitbook/assets/screen-shot-2020-10-15-at-12.00.44-pm.png)
+![](.gitbook/assets/screen-shot-2020-10-26-at-3.17.40-pm.png)
 
 * **bt** is the token generation speed \(Token per block\) of the mining pool B
 * **Xt** is the total amount of the corresponding asset pool XToken participate in mining
-* **Np** is The net worth of each share\(XToken\) in an asset pool, it is represented by its ETH value.
+* **Npnok** is The net worth of each share\(XToken\) in an asset pool, it is represented by its ETH value.
 * **q** is the number of asset pools
 * **r = 0.3,** it is the expected return on market making assets
-* φ is the mining factor for diffrerent asset pools, ETH-USDT is 2/3, ETH-HBTC is 1/3
+* φ is the mining factor for different asset pools, ETH-USDT is 2/3, ETH-HBTC is 1/3
 * The actual amount of CoFo token generated for TX t is A\(yt\)
 
 ![](.gitbook/assets/img_5263.jpg)
