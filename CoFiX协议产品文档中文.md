@@ -498,6 +498,8 @@ T 为时间延迟：T=（打包成功区块高度-最近有效NEST价格所在�
 
 ![](http://latex.codecogs.com/svg.latex?c=%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D0%20&%20VOL%3C500%20%5C%5C%5Calpha%20&plus;%5Cbeta%20*VOL%20&%20VOL%5Cgeq%20500%20%5C%5C%5Cend%7Bmatrix%7D%5Cright.)
 
+注：冲击成本只在交易和份额赎回时考虑。
+
 ### 七、其他问题
 
 1. 当K值实时更新时，由于K值的计算受多种因素影响，可能导致极不合理的价格，从而给系统或者实际用户造成损失，规定停机条件如下：如果![](http://latex.codecogs.com/svg.latex?K_{0})值大于5%，停机。如果使用期望值![](http://latex.codecogs.com/svg.latex?\bar{K}_{0}) 来对做市商进行补偿，则不存在![](http://latex.codecogs.com/svg.latex?K_{0})的停机条件。
