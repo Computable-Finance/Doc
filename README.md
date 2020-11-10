@@ -270,7 +270,7 @@ Dividend and Governance, produced through liquidity mining.
 **CoFi Tokens are generated through the 3 mining pools:**
 
 * **Mining pool A, the trading mining pool:** The token amount generated per TX is based on the extra fees collected from that TX, the token generation speed \(Token per block\) of the mining pool B, the total amount of the corresponding asset pool XToken participate in mining, and the Np \(net worth per share of the corresponding asset pool\) 
-* **Mining pool B, the liquidity mining pool: bt** is the \_\*\*\_amount of CoFi tokens generated per block, bt ≥1, start with b0=4, the amount will be reduced by 20% for every 2,400,000 blocks and kept the integer only. For example b1=3, b2=2, b3=1, b4=1, b5=1, b6=1 ...
+* **Mining pool B, the liquidity mining pool: bt** is the \_\*\*\_amount of CoFi tokens generated per block, bt ≥3.6864, start with b0=9, the amount will be reduced by 20% for every 2,400,000 blocks and kept the integer only. For example b1=7.2, b2=5.76, b3=4.608, b4=3.6864, b5=3.6864, b6=3.6864 ...
 * **Mining pool C, the node mining pool\(Development team and early supporters\): ct** is the amount of CoFi tokens generated per block, ct = bt/9
 
 **General token distribution:**
